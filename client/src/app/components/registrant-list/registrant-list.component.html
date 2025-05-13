@@ -1,0 +1,32 @@
+<!-- <h1>רשימת הנרשמות:</h1> 
+<ag-grid-angular
+  style="width: 100%; height: 500px;"
+  class="ag-theme-alpine"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  [pagination]="true"
+  [gridOptions]="{}">
+</ag-grid-angular> -->
+
+<table border="1" dir="rtl">
+  <thead>
+    <tr>
+      <th>שם</th>
+      <th>טלפון</th>
+      <th>ת"ז</th>
+      <th>מזהה שיעור</th>
+      <th>מחיר</th>
+      <th>תשלום</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registrant of registrants">
+      <td>{{ registrant.fullName }}</td>
+      <td>{{ registrant.phone }}</td>
+      <td>{{ registrant.idNumber }}</td>
+      <td>{{ registrant.lessonId }}</td>
+      <td>{{ registrant.price }}</td>
+      <td>{{ registrant.paid }}</td>
+    </tr>
+  </tbody>
+</table>

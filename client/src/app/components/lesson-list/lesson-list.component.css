@@ -1,0 +1,46 @@
+h1{
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 16px;
+    color: #de2b2b;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 16px;
+}
+
+.lesson-card {
+  border: 1px solid #df0c0c;
+  border-radius: 8px;
+  padding: 16px;
+  width: 200px;
+  text-align: center;
+  background-color: #e0adad;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lesson-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.lesson-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+.highlight {
+  background-color: #ffe0e0;
+  border: 2px solid red;
+  font-weight: bold;
+}

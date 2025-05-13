@@ -1,0 +1,12 @@
+<div class="lesson-details-container">
+  <div class="lesson-card">
+      <button class="back-button" (click)="backToLessons()">חזור</button>
+
+    <h1>{{ lesson.lessonName }}</h1>
+    <p><strong>תאריך התחלה:</strong> {{ lesson.startDate | date:'dd/MM/yyyy' }}</p>
+    <p><strong>מספר מפגשים:</strong> {{ lesson.sessions }}</p>
+    <p><strong>שעה:</strong> {{ lesson.time }}</p>
+    <p><strong>מורה:</strong> {{ lesson.teacher }}</p>
+    <p><strong>מחיר:</strong> {{ lesson.price | currency:'ILS' }}</p>
+  </div>
+</div>

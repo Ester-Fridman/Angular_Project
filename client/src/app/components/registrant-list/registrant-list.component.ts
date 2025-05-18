@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterantService } from 'src/app/services/registerant.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { RegisterantService } from 'src/app/services/registerant.service';
   styleUrls: ['./registrant-list.component.css']
 })
 export class RegistrantListComponent implements OnInit {
-  constructor(private registrantService: RegisterantService) { }
+  constructor(private registrantService: RegisterantService, private router: Router) { }
 
   ngOnInit(): void {
     this.getAllRegisterants();
@@ -16,16 +17,31 @@ export class RegistrantListComponent implements OnInit {
   registrants: any[] = [];
   rowData: any[] = [];
 
-  // הצגת פרטי כל הנרשמות בתוך טבלה ע"י ימוש ב ag-grid
-  // הגדרת משתנים
-columnDefs = [
-  { field: 'fullName', headerName: 'שם מלא', sortable: true, filter: true },
-  { field: 'phone', headerName: 'טלפון', sortable: true, filter: true },
-  { field: 'idNumber', headerName: 'תעודת זהות', sortable: true, filter: true },
-  { field: 'lessonId', headerName: 'מזהה שיעור', sortable: true, filter: true },
-  { field: 'price', headerName: 'מחיר', sortable: true, filter: true },
-  { field: 'paid', headerName: 'שולם', sortable: true, filter: true }
-];  
+  columnDefs = [
+    {
+      headerName: 'פרטים',
+      cellRenderer: (params: any) => {
+        return `<button class="details-btn">פרטים</button>`;
+      },
+      width: 100,
+      suppressMenu: true,
+      sortable: false,
+      filter: false
+    },
+    { field: 'idNumber', headerName: 'תעודת זהות', sortable: true, filter: true },
+    { field: 'phone', headerName: 'טלפון', sortable: true, filter: true },
+
+    { field: 'fullName', headerName: 'שם מלא', sortable: true, filter: true },
+
+  ];
+
+  defaultColDef = {
+    flex: 1,
+    minWidth: 100,
+    filter: true,
+    sortable: true,
+    resizable: true
+  };
 
   getAllRegisterants() {
     this.registrantService.getAllRegisterants().subscribe(
@@ -43,10 +59,20 @@ columnDefs = [
       }
     );
   }
-  ngAfterViewInit(): void {
-  const ariaDescription = document.querySelector('.ag-aria-description-container');
-  if (ariaDescription) {
-    ariaDescription.remove();
+  //   ngAfterViewInit(): void {
+  //   const ariaDescription = document.querySelector('.ag-aria-description-container');
+  //   if (ariaDescription) {
+  //     ariaDescription.remove();
+  //   }
+  // }
+
+  onCellClicked(event: any) {
+    if (event.colDef.headerName === 'פרטים' && event.event.target.classList.contains('details-btn')) {
+      this.showRegistrantDetails(event.data);
+    }
   }
-}
+
+  showRegistrantDetails(registrant: any) {
+      this.router.navigate(['/registrant', registrant.idNumber]);
+  }
 }

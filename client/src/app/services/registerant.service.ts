@@ -17,4 +17,8 @@ export class RegisterantService {
     return this.http.get<any>(`http://localhost:3000/api/registerant/${id}`);
   }
 
+  back(): void {
+    window.history.back();
+  } 
+
 }

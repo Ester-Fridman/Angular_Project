@@ -2,45 +2,88 @@ h1{
     font-size: 28px;
     text-align: center;
     margin-bottom: 16px;
-    color: #de2b2b;
+    color: #cc0066;
 }
+
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
-  padding: 16px;
-}
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px;
+  }
+  
+  .lesson-card {
+    border: 1px solid #e08787;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    text-align: center;
+    background-color: #ec8898;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .lesson-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .lesson-card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #cc0066;
+  }
+  
+  .lesson-card p {
+    font-size: 14px;
+    color: #cc0066;
+  }
 
-.lesson-card {
-  border: 1px solid #df0c0c;
-  border-radius: 8px;
-  padding: 16px;
-  width: 200px;
-  text-align: center;
-  background-color: #e0adad;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+  .highlight {
+    background-color: #ffe0e0;
+    border: 2px solid #ec8898;
+    font-weight: bold;
+  }
+  
+  /* כפתור חזור */
+  .actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .actions .back-button {
+    background-color: #cc0066; /* ורוד כהה */
+    color: #ffffff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions .back-button:hover {
+    background-color: #e60073; /* ורוד כהה יותר */
+  }
 
-.lesson-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.lesson-card h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
-  color: #333;
-}
-
-.lesson-card p {
-  font-size: 14px;
-  color: #666;
-}
-
-.highlight {
-  background-color: #ffe0e0;
-  border: 2px solid red;
+  /* אפשר להוסיף לקובץ lesson-list.component.css */
+.material-title {
+  font-family: 'Heebo', 'Assistant', Arial, sans-serif;
+  font-size: 2.3rem;
+  color: #e60073;
   font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0;
+  padding: 12px 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.material-title mat-icon {
+  vertical-align: middle;
+  margin-left: 8px;
+  font-size: 2.5rem;
 }

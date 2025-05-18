@@ -47,6 +47,6 @@ export class LessonDetailsComponent {
   }
 
   backToLessons() {
-    window.history.back();
+    this.lessonsService.back();
   }
 }

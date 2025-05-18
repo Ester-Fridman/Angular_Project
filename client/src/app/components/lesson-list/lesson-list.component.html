@@ -1,8 +1,17 @@
-<h1>רשימת השיעורים</h1>
+<!-- <h1>רשימת השיעורים</h1> -->
+<mat-card style="margin: 32px auto 16px auto; max-width: 500px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); border-radius: 16px;">
+  <div style="display: flex; align-items: center; justify-content: center;">
+    <!-- <mat-icon color="primary" style="font-size: 40px; margin-left: 8px;">school </mat-icon> -->
+    <span class="material-title">רשימת השיעורים</span>
+  </div>
+</mat-card>
+
+<div class="actions">
+  <button class="back-button" (click)="backToLogin()">יציאה</button>
+</div>
 <div class="gallery">
-  <div class="lesson-card" *ngFor="let lesson of lessons"
-  (click)="goToLessonDetails(lesson.id)"
-  [ngClass]="{'highlight': isLessonExpired(lesson.startDate)}">
+  <div class="lesson-card" *ngFor="let lesson of lessons" (click)="goToLessonDetails(lesson.id)"
+    [ngClass]="{'highlight': isLessonExpired(lesson.startDate)}">
     <h3>{{ lesson.lessonName }}</h3>
     <p>מורה: {{ lesson.teacher }}</p>
   </div>

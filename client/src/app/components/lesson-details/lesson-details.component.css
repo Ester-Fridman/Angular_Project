@@ -8,7 +8,7 @@
 }
 
 .lesson-card {
-  position: relative; /* חשוב כדי שהכפתור ימוקם יחסית לכרטיס */
+  position: relative; 
   background-color: #faade4;
   border: 1px solid #7a1389;
   border-radius: 8px;
@@ -43,9 +43,9 @@
 }
 
 .back-button {
-  position: absolute; /* מיקום יחסי ל-lesson-card */
-  top: 10px; /* מרחק מהחלק העליון של הכרטיס */
-  right: 10px; /* מרחק מהצד הימני של הכרטיס */
+  position: absolute;
+  top: 10px; 
+  right: 10px;
   background-color: #78167b;
   color: #fff;
   border: none;

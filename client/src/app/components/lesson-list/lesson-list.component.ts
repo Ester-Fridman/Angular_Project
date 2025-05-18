@@ -53,4 +53,8 @@ export class LessonListComponent implements OnInit {
     return lessonDate < today; // בדיקה אם תאריך השיעור קטן מהיום
   }
 
+  backToLogin(){
+    this.lessonsService.back();
+  }
+
 }

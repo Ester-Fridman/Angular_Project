@@ -1,0 +1,67 @@
+.registerant-details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.registerant-card {
+  position: relative;
+  background-color: #faade4;
+  border: 1px solid #7a1389;
+  border-radius: 8px;
+  padding: 40px;
+  width: 500px;
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.registerant-card h1 {
+  font-size: 38px;
+  color: #d415ae;
+  margin-bottom: 16px;
+}
+
+.registerant-card p {
+  font-size: 20px;
+  color: #6c245a;
+  margin-bottom: 12px;
+}
+
+.registerant-card p strong {
+  font-size: 24px;
+  color: #70224c;
+}
+
+.registerant-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+  transition: all 0.3s ease-in-out;
+}
+
+.back-button {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  background-color: #78167b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #de4ca6;
+  transform: scale(1.05);
+}
+
+.back-button:active {
+  background-color: #b70fc9;
+}

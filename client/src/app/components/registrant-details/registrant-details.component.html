@@ -1,1 +1,18 @@
-<p>registrant-details works!</p>
+<div class="registerant-details-container">
+  <div class="registerant-card" *ngIf="registerant">
+    <button class="back-button" (click)="backToRegisterants()">חזור</button>
+    <h1>פרטי נרשמת</h1>
+    <p><strong>שם מלא:</strong> {{ registerant.fullName }}</p>
+    <p><strong>תעודת זהות:</strong> {{ registerant.idNumber }}</p>
+    <p><strong>טלפון:</strong> {{ registerant.phone }}</p>
+    <p><strong>מזהה שיעור:</strong> {{ registerant.lessonId }}</p>
+    <p><strong>מחיר:</strong> {{ registerant.price }}</p>
+    <p><strong>שולם:</strong> {{ registerant.paid ? 'כן' : 'לא' }}</p>
+  </div>
+  <div class="registerant-card" *ngIf="!registerant">
+    <h1>פרטי נרשמת</h1>
+    <p>לא נמצאו נתונים עבור נרשמת זו.</p>
+    <button class="back-button" (click)="backToRegisterants()">חזור</button>
+  </div>
+</div>
+

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LessonsService } from 'src/app/services/lessons.service';
+import { RegisterantService } from 'src/app/services/registerant.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +12,9 @@ import Swal from 'sweetalert2';
 export class LessonListComponent implements OnInit {
   lessons: any[] = [];
   selectedLesson: any = null;
-  constructor(private lessonsService: LessonsService, private router: Router) { }
+  lessonFullStatus: { [lessonId: number]: boolean } = {};
+
+  constructor(private lessonsService: LessonsService, private registerantService: RegisterantService, private router: Router) { }
 
   ngOnInit(): void {
     this.getLessons();
@@ -21,6 +24,7 @@ export class LessonListComponent implements OnInit {
     this.lessonsService.getAllLessons().subscribe(
       (data) => {
         this.lessons = data;
+        this.checkIfLessonsAreFull();
       }
       , (error) => {
         console.error('Error fetching lessons:', error);
@@ -28,11 +32,21 @@ export class LessonListComponent implements OnInit {
     );
   }
 
+  checkIfLessonsAreFull() {
+  this.lessons.forEach(lesson => {
+    this.registerantService.getAllRegisterantsOfLesson(lesson.id).subscribe(registerants => {
+      this.lessonFullStatus[lesson.id] = registerants.length >= 10;
+    }, error => {
+      console.error('Error fetching registrants for lesson', lesson.id, error);
+      this.lessonFullStatus[lesson.id] = false;
+    });
+  });
+}
+
   goToLessonDetails(id: number) {
     this.lessonsService.getLessonById(id).subscribe(
       (data) => {
         this.selectedLesson = data;
-        //ניתוב לדף פרטי השיעור
         this.router.navigate([`/lessons/${id}`]);
       }
       , (error) => {
@@ -53,6 +67,13 @@ export class LessonListComponent implements OnInit {
     return lessonDate < today; // בדיקה אם תאריך השיעור קטן מהיום
   }
 
+  // async isLessonFull(lesson: any): Promise<boolean> {
+  //   const registerants = await this.registerantService.getAllRegisterantsOfLesson(lesson.id).toPromise();
+  //   console.log(registerants);
+  //   return !!registerants && registerants.length >= 10; // בדיקה אם מספר הנרשמים גדול או שווה למספר המקסימלי
+    
+  // }
+  
   backToLogin(){
     this.lessonsService.back();
   }

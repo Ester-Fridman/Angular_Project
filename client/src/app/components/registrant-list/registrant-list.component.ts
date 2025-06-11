@@ -43,6 +43,10 @@ export class RegistrantListComponent implements OnInit {
     resizable: true
   };
 
+  rowClassRules = {
+    'unpaid-row': (params: any) => params.data && !params.data.paid
+  };
+
   getAllRegisterants() {
     this.registrantService.getAllRegisterants().subscribe(
       (response: any) => {
@@ -59,12 +63,6 @@ export class RegistrantListComponent implements OnInit {
       }
     );
   }
-  //   ngAfterViewInit(): void {
-  //   const ariaDescription = document.querySelector('.ag-aria-description-container');
-  //   if (ariaDescription) {
-  //     ariaDescription.remove();
-  //   }
-  // }
 
   onCellClicked(event: any) {
     if (event.colDef.headerName === 'פרטים' && event.event.target.classList.contains('details-btn')) {
@@ -73,6 +71,6 @@ export class RegistrantListComponent implements OnInit {
   }
 
   showRegistrantDetails(registrant: any) {
-      this.router.navigate(['/registrant', registrant.idNumber]);
+    this.router.navigate(['/registrant', registrant.idNumber]);
   }
 }

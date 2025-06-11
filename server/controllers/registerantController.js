@@ -42,6 +42,13 @@ const registrants = [
     { fullName: 'שירה גולד', phone: '050-9991011', idNumber: '112233445', lessonId: 12, price: 800, paid: true },
     { fullName: 'דפנה שרון', phone: '050-1011123', idNumber: '223344556', lessonId: 13, price: 1000, paid: false },
     { fullName: 'אילנה וולף', phone: '050-1122335', idNumber: '334455667', lessonId: 1, price: 1200, paid: true },
+    { fullName: 'רונית לוי', phone: '050-1111111', idNumber: '123123123', lessonId: 1, price: 1200, paid: false },
+    { fullName: 'דנה כהן', phone: '050-2222222', idNumber: '234234234', lessonId: 1, price: 1200, paid: true },
+    { fullName: 'יעל ישראלי', phone: '050-3333333', idNumber: '345345345', lessonId: 1, price: 1200, paid: false },
+    { fullName: 'נועה ברק', phone: '050-4444444', idNumber: '456456456', lessonId: 1, price: 1200, paid: true },
+    { fullName: 'הילה דגן', phone: '050-5555555', idNumber: '567567567', lessonId: 1, price: 1200, paid: true },
+    { fullName: 'אורית שרון', phone: '050-6666666', idNumber: '678678678', lessonId: 1, price: 1200, paid: false },
+    { fullName: 'אביטל נחום', phone: '050-7777777', idNumber: '789789789', lessonId: 1, price: 1200, paid: true },
     { fullName: 'רבקה הררי', phone: '050-2233446', idNumber: '445566778', lessonId: 2, price: 1000, paid: true },
     { fullName: 'אביגיל צור', phone: '050-3344557', idNumber: '556677889', lessonId: 3, price: 1500, paid: false },
     { fullName: 'חגית כהן', phone: '050-4455668', idNumber: '667788990', lessonId: 4, price: 800, paid: true },
@@ -61,6 +68,16 @@ router.get('/:idNumber', (req, res) => {
         res.json(registrant);
     } else {
         res.status(404).json({ error: 'Registrant not found' });
+    }
+});
+
+router.get('/lesson/:lessonId', (req, res) => {
+    const lessonId = parseInt(req.params.lessonId);
+    const lessonRegistrants = registrants.filter(r => r.lessonId === lessonId);
+    if (lessonRegistrants.length > 0) {
+        res.json(lessonRegistrants);
+    } else {
+        res.status(404).json({ error: 'No registrants found for this lesson' });
     }
 });
 

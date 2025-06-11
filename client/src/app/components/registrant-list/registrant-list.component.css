@@ -1,0 +1,6 @@
+:host ::ng-deep .ag-row.unpaid-row .ag-cell {
+  background-color: #ffbaba !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  border-bottom: 2px solid #d32f2f !important;
+}
